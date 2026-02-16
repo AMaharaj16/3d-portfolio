@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+import Room from './three/room';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Canvas
+        shadows
+        camera={{ position: [0, 2, 8], fov: 60 }}
+        style={{ width: '100vw', height: '100vh', display: 'block' }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+        <ambientLight intensity={0.5} />
+        <pointLight position={[5, 10, 5]} intensity={1} />
+        <Room />
+        <OrbitControls target={[0, 1, 0]} minDistance={2} maxDistance={12}/>
+        <directionalLight
+            position={[0, 10, 0]}
+            intensity={8}
+            castShadow
+            shadow-mapSize-width={1024}
+            shadow-mapSize-height={1024}
+        />
+    </Canvas>
   );
 }
 
