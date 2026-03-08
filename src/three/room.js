@@ -2,7 +2,8 @@ import React from 'react';
 import Bed from './objects/bed';
 import Desk from './objects/desk';
 import GameConsole from './objects/gameconsole';
-import Bedroom from './objects/bedroom'
+import Bedroom from './objects/bedroom';
+import Tars from './objects/tars';
 
 export default function Room() {
   return (
@@ -18,6 +19,7 @@ export default function Room() {
       <Desk />
       <GameConsole />
       <Bed />
+      <Tars intensity={10} emissive={0xffffff} />
     </>
   );
 }
