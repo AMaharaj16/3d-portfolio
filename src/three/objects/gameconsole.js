@@ -1,10 +1,7 @@
 import React from 'react';
+import { useGLTF } from '@react-three/drei';
 
 export default function GameConsole() {
-  return (
-    <mesh position={[1.5, 0.5, 0]}>
-      <boxGeometry args={[0.5, 0.5, 0.5]} />
-      <meshStandardMaterial color="#0f0" />
-    </mesh>
-  );
+  const { scene } = useGLTF('/models/ps5.glb'); // relative to public/
+  return <primitive object={scene} position={[-12, 0.2, 3]} scale={5} rotation={[0, -Math.PI / 2, 0]}/>;
 }

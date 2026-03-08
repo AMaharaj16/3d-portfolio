@@ -7,13 +7,12 @@ function App() {
   return (
     <Canvas
         shadows
-        camera={{ position: [0, 2, 8], fov: 60 }}
+        camera={{ position: [10, 2, -4], fov: 60 }}
         style={{ width: '100vw', height: '100vh', display: 'block' }}
         >
-        <ambientLight intensity={0.5} />
-        <pointLight position={[5, 10, 5]} intensity={1} />
+        <ambientLight intensity={2.5} />
         <Room />
-        <OrbitControls target={[0, 1, 0]} minDistance={2} maxDistance={12}/>
+        <OrbitControls target={[0, 1, 0]} minDistance={30} maxDistance={40}/>
         <directionalLight
             position={[0, 10, 0]}
             intensity={8}
