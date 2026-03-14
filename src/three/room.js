@@ -4,6 +4,7 @@ import Desk from './objects/desk';
 import GameConsole from './objects/gameconsole';
 import Bedroom from './objects/bedroom';
 import Tars from './objects/tars';
+import Poster from './objects/poster'
 
 export default function Room() {
   return (
@@ -20,6 +21,13 @@ export default function Room() {
       <GameConsole />
       <Bed />
       <Tars intensity={10} emissive={0xffffff} />
+      <Poster
+        imagePath="/models/sailbot.jpg"   // put images in /public/posters/
+        position={[5, 7, -7.5]}           // adjust to your wall coords
+        rotation={[0, 0, 0]}     // left wall faces right
+        width={2.2}
+        height={3}
+      />
     </>
   );
 }

@@ -12,7 +12,7 @@ function App() {
         >
         <ambientLight intensity={2.5} />
         <Room />
-        <OrbitControls target={[0, 1, 0]} minDistance={30} maxDistance={40}/>
+        <OrbitControls target={[0, 1, 0]} minDistance={10} maxDistance={40}/>
         <directionalLight
             position={[0, 10, 0]}
             intensity={8}
