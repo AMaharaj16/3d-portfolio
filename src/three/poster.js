@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useSpring, animated } from '@react-spring/three';
 import { useTexture } from '@react-three/drei';
+import { useNavigate } from 'react-router-dom';
 
-export default function Poster({ imagePath, position, rotation, width = 1.2, height = 1.6 }) {
+export default function Poster({ imagePath, position, rotation, width, height, route }) {
   const texture = useTexture(imagePath);
+  const navigate = useNavigate();
   const [hovered, setHovered] = useState(false);
 
   const { intensity, emissiveIntensity } = useSpring({
@@ -16,6 +18,7 @@ export default function Poster({ imagePath, position, rotation, width = 1.2, hei
     <group
       position={position}
       rotation={rotation}
+      onClick={() => route && navigate(route)}
       onPointerOver={() => {
         setHovered(true);
         document.body.style.cursor = 'pointer';

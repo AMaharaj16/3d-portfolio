@@ -4,7 +4,7 @@ import Desk from './objects/desk/desk';
 import GameConsole from './objects/gameconsole/gameconsole';
 import Bedroom from './objects/bedroom';
 import Tars from './objects/tars/tars';
-import Poster from './objects/poster/poster'
+import Poster from './poster'
 
 export default function Room() {
   return (
@@ -27,6 +27,7 @@ export default function Room() {
         rotation={[0, 0, 0]}     // left wall faces right
         width={2.2}
         height={3}
+        route="/sailbot"
       />
     </>
   );
