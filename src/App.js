@@ -6,6 +6,7 @@ import Room from './three/room';
 import SailbotPage from './three/objects/poster/sailbotpage';
 import SafeSoftwarePage from './three/objects/poster/safesoftwarepage';
 import DeskPage from './three/objects/desk/deskpage';
+import GameConsolePage from './three/objects/gameconsole/gameconsolepage';
 
 function MainScene() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path="/sailbot" element={<SailbotPage />} />
         <Route path="/safesoftware" element={<SafeSoftwarePage />} />   
         <Route path="/desk" element={<DeskPage />} />
+        <Route path="/gameconsole" element={<GameConsolePage />} />
       </Routes>
     </BrowserRouter>
   );
