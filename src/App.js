@@ -7,6 +7,9 @@ import SailbotPage from './three/objects/poster/sailbotpage';
 import SafeSoftwarePage from './three/objects/poster/safesoftwarepage';
 import DeskPage from './three/objects/desk/deskpage';
 import GameConsolePage from './three/objects/gameconsole/gameconsolepage';
+import TarsPage from './three/objects/tars/tarspage';
+
+// inside Routes:
 
 function MainScene() {
   return (
@@ -38,6 +41,7 @@ function App() {
         <Route path="/safesoftware" element={<SafeSoftwarePage />} />   
         <Route path="/desk" element={<DeskPage />} />
         <Route path="/gameconsole" element={<GameConsolePage />} />
+        <Route path="/tars" element={<TarsPage />} />
       </Routes>
     </BrowserRouter>
   );
