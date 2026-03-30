@@ -29,6 +29,14 @@ export default function Room() {
         height={3}
         route="/sailbot"
       />
+      <Poster
+        imagePath="/models/safesoftware.jpg"   // put images in /public/posters/
+        position={[2, 7, -7.5]}           // adjust to your wall coords
+        rotation={[0, 0, 0]}     // left wall faces right
+        width={3}
+        height={2}
+        route="/safesoftware"
+      />
     </>
   );
 }

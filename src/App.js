@@ -4,6 +4,7 @@ import { OrbitControls } from '@react-three/drei';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Room from './three/room';
 import SailbotPage from './three/objects/poster/sailbotpage';
+import SafeSoftwarePage from './three/objects/poster/safesoftwarepage';
 
 function MainScene() {
   return (
@@ -32,6 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainScene />} />
         <Route path="/sailbot" element={<SailbotPage />} />
+        <Route path="/safesoftware" element={<SafeSoftwarePage />} />
       </Routes>
     </BrowserRouter>
   );
