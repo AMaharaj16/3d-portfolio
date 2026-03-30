@@ -1,10 +1,10 @@
 import React from 'react';
-import Bed from './objects/bed';
-import Desk from './objects/desk';
-import GameConsole from './objects/gameconsole';
+import Bed from './objects/bed/bed';
+import Desk from './objects/desk/desk';
+import GameConsole from './objects/gameconsole/gameconsole';
 import Bedroom from './objects/bedroom';
-import Tars from './objects/tars';
-import Poster from './objects/poster'
+import Tars from './objects/tars/tars';
+import Poster from './objects/poster/poster'
 
 export default function Room() {
   return (
