@@ -9,6 +9,7 @@ import DeskPage from './three/objects/desk/deskpage';
 import GameConsolePage from './three/objects/gameconsole/gameconsolepage';
 import TarsPage from './three/objects/tars/tarspage';
 import BedPage from './three/objects/bed/bedpage';
+import DoorPage from './three/objects/door/doorpage'
 
 // inside Routes:
 
@@ -44,6 +45,7 @@ function App() {
         <Route path="/gameconsole" element={<GameConsolePage />} />
         <Route path="/tars" element={<TarsPage />} />
         <Route path="/bed" element={<BedPage />} />
+        <Route path="/door" element={<DoorPage /> } />
       </Routes>
     </BrowserRouter>
   );
