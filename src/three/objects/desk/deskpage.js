@@ -22,11 +22,11 @@ export default function DeskPage() {
 
       {/* 3D canvas */}
       <div style={{ width: '100%', height: '50vh' }}>
-        <Canvas camera={{ position: [0, 2, 5], fov: 50 }} shadows>
+        <Canvas camera={{ position: [0, 5, 10], fov: 50 }} shadows>
           <ambientLight intensity={2} />
           <directionalLight position={[5, 10, 5]} intensity={4} />
           <DeskModel />
-          <OrbitControls autoRotate autoRotateSpeed={1.5} />
+          <OrbitControls autoRotate autoRotateSpeed={1.5} target={[15, 3, 0]}/>
         </Canvas>
       </div>
 
