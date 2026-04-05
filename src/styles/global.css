@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden; /* only block horizontal scroll */
+  overflow-y: auto;   /* allow vertical scrolling */
   font-family: sans-serif;
   background-color: #111;
 }
