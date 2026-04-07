@@ -12,7 +12,7 @@ export default function Door() {
 
   useFrame(() => {
     if (primitiveRef.current) {
-      const target = hovered ? 0.0405 : 0.04;
+      const target = hovered ? 0.0415 : 0.041;
       const current = primitiveRef.current.scale.x;
       const next = current + (target - current) * 0.1;
       primitiveRef.current.scale.set(next, next, next);
@@ -36,7 +36,7 @@ export default function Door() {
         ref={primitiveRef}
         object={scene}
         position={[-7.8,  0.2, -7.8]}
-        scale={0.04}
+        scale={0.041}
         rotation={[0, 0, 0]}
         onClick={() => navigate('/door')}
         onPointerOver={() => {
