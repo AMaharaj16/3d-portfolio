@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useGLTF } from '@react-three/drei';
+import { useGLTF, Html } from '@react-three/drei';
 import { useNavigate } from 'react-router-dom';
 import { useFrame } from '@react-three/fiber';
 
@@ -40,6 +40,54 @@ export default function Bed() {
     >
       <pointLight ref={lightRef} intensity={0} distance={15} color="#ffccaa" />
       <primitive object={scene} scale={5} rotation={[0, -Math.PI / 2, 0]} />
+
+      <Html
+        position={[0, 4.5, 0]}
+        center
+        distanceFactor={10}
+        style={{ pointerEvents: 'none' }}
+      >
+        <div style={{
+          position: 'relative',
+          display: 'flex',
+          alignItems: 'center',
+          padding: '9px 16px',
+          background: '#111',
+          border: '1px solid #333',
+          borderRadius: '6px',
+          boxShadow: '0 8px 32px rgba(0,0,0,0.6)',
+          pointerEvents: 'none',
+          whiteSpace: 'nowrap',
+          opacity: hovered ? 1 : 0,
+          transform: hovered ? 'translateY(0)' : 'translateY(4px)',
+          transition: 'opacity 0.15s ease-out, transform 0.15s ease-out',
+        }}>
+          <span style={{
+            fontFamily: '"Inter", "Helvetica Neue", sans-serif',
+            fontSize: '40px',
+            fontWeight: '500',
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            color: '#fff',
+          }}>
+            About me
+          </span>
+
+          {/* Caret */}
+          <div style={{
+            position: 'absolute',
+            bottom: '-5px',
+            left: '50%',
+            transform: 'translateX(-50%) rotate(45deg)',
+            width: '8px',
+            height: '8px',
+            background: '#111',
+            borderRight: '1px solid #333',
+            borderBottom: '1px solid #333',
+            pointerEvents: 'none',
+          }} />
+        </div>
+      </Html>
     </group>
   );
 }
