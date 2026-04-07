@@ -27,7 +27,7 @@ export default function GameConsole() {
     <>
       <pointLight
         ref={lightRef}
-        position={[17, 4, 8]}
+        position={[17, 0.45, 8]}
         color="#ffccaa"
         intensity={0}
         distance={20}

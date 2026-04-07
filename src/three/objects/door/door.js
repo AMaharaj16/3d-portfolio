@@ -27,7 +27,7 @@ export default function Door() {
     <>
       <pointLight
         ref={lightRef}
-        position={[-7.8,  0.2, -7.8]}
+        position={[-6.8,  0.2, -7.8]}
         color="#ffccaa"
         intensity={0}
         distance={20}
