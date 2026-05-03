@@ -1,177 +1,87 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { Suspense } from 'react';
+import { useTexture } from '@react-three/drei';
+import PageLayout from '../../../components/PageLayout';
+import ProjectCard from '../../../components/ProjectCard';
+import Section from '../../../components/Section';
+
+const ACCENT = '#7bd0ff';
+
+function SailbotHero() {
+  const tex = useTexture('/models/sailbot.jpg');
+  return (
+    <Suspense fallback={null}>
+      <group position={[0, 0, 0]}>
+        {/* Frame */}
+        <mesh position={[0, 0, -0.06]} castShadow>
+          <boxGeometry args={[3.2, 4.2, 0.1]} />
+          <meshStandardMaterial color="#0a0a0a" metalness={0.6} roughness={0.35} emissive={ACCENT} emissiveIntensity={0.4} />
+        </mesh>
+        {/* Image */}
+        <mesh position={[0, 0, 0]}>
+          <planeGeometry args={[3, 4]} />
+          <meshStandardMaterial map={tex} emissiveMap={tex} emissive="#ffffff" emissiveIntensity={0.25} />
+        </mesh>
+        {/* Glow */}
+        <mesh position={[0, 0, -0.12]}>
+          <planeGeometry args={[4.4, 5.4]} />
+          <meshBasicMaterial color={ACCENT} transparent opacity={0.35} depthWrite={false} />
+        </mesh>
+      </group>
+    </Suspense>
+  );
+}
 
 export default function SailbotPage() {
-  const navigate = useNavigate();
-
-  const cardStyle = {
-    marginBottom: '2rem',
-    padding: '1.5rem',
-    border: '1px solid #222',
-    borderRadius: '8px',
-    background: '#0d1324',
-  };
-
   return (
-    <div style={{
-      width: '100vw',
-      minHeight: '100vh',
-      background: '#0a0f1e',
-      color: '#fff',
-      fontFamily: 'sans-serif',
-    }}>
-
-      {/* Hero image */}
-      <div style={{
-        width: '100%',
-        height: '25vh',
-        backgroundImage: 'url(/models/sailbot.jpg)',
-        backgroundSize: 'contain',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundColor: '#0a0f1e',
-      }} />
-
-      {/* Content */}
-      <div style={{ maxWidth: 700, margin: '0 auto', padding: '2rem' }}>
-        <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>
-          UBC Sailbot
-        </h1>
-
-        <p style={{ color: '#aaa', fontSize: '0.9rem', marginBottom: '2rem' }}>
-          Software Team — Autonomous Navigation
-        </p>
-
-        {/* Card 1 - Lead */}
-        <div style={cardStyle}>
-          <h2 style={{ fontSize: '1.4rem', marginBottom: '0.25rem' }}>
-            Pathfinding Lead
-          </h2>
-          <p style={{ color: '#666', fontSize: '0.85rem', marginBottom: '1rem' }}>
-            Feb 2026 – Present · Vancouver, BC
-          </p>
-
-          <ul style={{ color: '#ccc', lineHeight: 1.8, paddingLeft: '1.25rem' }}>
-            <li>
-              Promoted to Pathfinding Lead, guiding algorithm development and coordinating a six-member
-              navigation team within an 80-person multidisciplinary design team.
-            </li>
-            <li>
-              Review pull requests and maintain code quality across the pathfinding module.
-            </li>
-            <li>
-              Identify and scope tasks to improve performance, robustness, and handling of dynamic scenarios.
-            </li>
-          </ul>
-        </div>
-
-        {/* Card 2 - Developer */}
-        <div style={cardStyle}>
-          <h2 style={{ fontSize: '1.4rem', marginBottom: '0.25rem' }}>
-            Pathfinding Software Developer
-          </h2>
-          <p style={{ color: '#666', fontSize: '0.85rem', marginBottom: '1rem' }}>
-            Sep 2025 – Feb 2026 · Vancouver, BC
-          </p>
-
-          <ul style={{ color: '#ccc', lineHeight: 1.8, paddingLeft: '1.25rem' }}>
-            <li>
-              Developed local pathfinding algorithms within a ROS-based autonomous navigation system.
-            </li>
-            <li>
-              Designed navigation logic using AIS and sensor data to account for dynamic obstacles.
-            </li>
-            <li>
-              Participated in simulation and on-water testing to validate system performance.
-            </li>
-          </ul>
-        </div>
-
-        {/* Skills */}
-        <p style={{ color: '#ccc', marginBottom: '0.5rem' }}>
-          <strong>Skills & Technologies:</strong>
-        </p>
-
-        <ul style={{ color: '#ccc', lineHeight: 2, paddingLeft: '1.25rem' }}>
-          <li>Python</li>
-          <li>ROS</li>
-          <li>Docker</li>
-          <li>GitHub</li>
-          <li>Ubuntu</li>
-          <li>Pathfinding Algorithms</li>
-          <li>Simulation Testing</li>
-        </ul>
-
-        {/* Buttons */}
-        <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
-          <button
-            onClick={() => navigate('/')}
-            style={{
-              padding: '0.6rem 1.4rem',
-              background: 'transparent',
-              border: '1px solid #555',
-              color: '#aaa',
-              cursor: 'pointer',
-              fontSize: '0.9rem',
-              borderRadius: '4px',
-            }}
-          >
-            ← Back to room
-          </button>
-
-          <a
-            href="https://www.ubcsailbot.org"
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              padding: '0.75rem 1.6rem',
-              borderRadius: '8px',
-              background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
-              color: '#fff',
-              textDecoration: 'none',
-              fontSize: '0.9rem',
-              fontWeight: '500',
-              transition: 'all 0.2s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.transform = 'translateY(-2px)';
-              e.target.style.boxShadow = '0 10px 25px rgba(99,102,241,0.4)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = 'none';
-            }}
-          >
-            Visit Website →
-          </a>
-
-          <a
-            href="https://github.com/UBCSailbot/sailbot_workspace"
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              padding: '0.75rem 1.6rem',
-              borderRadius: '8px',
-              background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
-              color: '#fff',
-              textDecoration: 'none',
-              fontSize: '0.9rem',
-              fontWeight: '500',
-              transition: 'all 0.2s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.transform = 'translateY(-2px)';
-              e.target.style.boxShadow = '0 10px 25px rgba(99,102,241,0.4)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = 'none';
-            }}
-          >
-            Visit GitHub →
-          </a>
-        </div>
+    <PageLayout
+      accent={ACCENT}
+      eyebrow="UBC Sailbot"
+      title="Software Lead — Pathfinding."
+      lead="Leading the pathfinding subsystem of UBC Sailbot's autonomous navigation
+        stack — a six-person navigation team inside an 80-person multidisciplinary
+        design team. We're building software that can take a sailboat across an ocean
+        on its own."
+      hero={<SailbotHero />}
+    >
+      <div className="job-meta">
+        <span>UBC Sailbot</span>
+        <span>Pathfinding · ROS</span>
+        <span>Vancouver, BC</span>
+        <span>Sep 2025 — Present</span>
       </div>
-    </div>
+
+      <Section label="Highlights">
+        <ProjectCard
+          title="Software Pathfinding Lead"
+          date="Feb 2026 — Present"
+          tagline="Promoted to lead after six months of development work on the team."
+          bullets={[
+            'Guide algorithm development and coordinate a six-member navigation team within an 80-person multidisciplinary design team.',
+            'Review code, define tasks, and enforce accountability to ensure consistent progress and code quality.',
+            'Coordinate cross-team integration of pathfinding within a distributed robotics system.',
+            'Independently deliver core features while leading development efforts across the pathfinding subsystem.',
+          ]}
+          chips={['Python', 'ROS', 'Technical leadership', 'Code review']}
+        />
+
+        <ProjectCard
+          title="Software Pathfinding Developer"
+          date="Sep 2025 — Feb 2026"
+          tagline="Started here as a developer before moving into the lead role."
+          bullets={[
+            'Designed and implemented Python pathfinding algorithms in a ROS-based autonomous navigation stack.',
+            'Processed real-time AIS and sensor data for dynamic obstacle avoidance in simulation and on-water testing.',
+            'Containerized navigation modules with Docker for reproducible deployment across environments.',
+            'Integrated modules into a distributed robotics architecture with 20+ software contributors.',
+            'Applied strong ROS knowledge to enable communication across navigation, perception, and control modules.',
+          ]}
+          chips={['Python', 'ROS', 'Docker', 'AIS', 'Sensor fusion']}
+          link={{
+            label: 'UBC Sailbot →',
+            href: 'https://www.linkedin.com/company/6382586/',
+          }}
+        />
+      </Section>
+    </PageLayout>
   );
 }

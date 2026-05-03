@@ -1,166 +1,87 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { Suspense } from 'react';
+import { useTexture } from '@react-three/drei';
+import PageLayout from '../../../components/PageLayout';
+import ProjectCard from '../../../components/ProjectCard';
+import Section from '../../../components/Section';
+
+const ACCENT = '#a586ff';
+
+function SafeSoftwareHero() {
+  const tex = useTexture('/models/safesoftware.jpg');
+  return (
+    <Suspense fallback={null}>
+      <group>
+        <mesh position={[0, 0, -0.06]} castShadow>
+          <boxGeometry args={[4.2, 3.2, 0.1]} />
+          <meshStandardMaterial color="#0a0a0a" metalness={0.6} roughness={0.35} emissive={ACCENT} emissiveIntensity={0.4} />
+        </mesh>
+        <mesh position={[0, 0, 0]}>
+          <planeGeometry args={[4, 3]} />
+          <meshStandardMaterial map={tex} emissiveMap={tex} emissive="#ffffff" emissiveIntensity={0.25} />
+        </mesh>
+        <mesh position={[0, 0, -0.12]}>
+          <planeGeometry args={[5.4, 4.4]} />
+          <meshBasicMaterial color={ACCENT} transparent opacity={0.35} depthWrite={false} />
+        </mesh>
+      </group>
+    </Suspense>
+  );
+}
 
 export default function SafeSoftwarePage() {
-  const navigate = useNavigate();
-
   return (
-    <div
-      style={{
-        width: '100vw',
-        minHeight: '100vh',
-        background: 'radial-gradient(circle at top, #111827, #020617)',
-        color: '#fff',
-        fontFamily: 'Inter, sans-serif',
-        paddingBottom: '4rem',
-      }}
+    <PageLayout
+      accent={ACCENT}
+      eyebrow="Safe Software"
+      title="Software Developer Intern — Product Security."
+      lead="Spent four months building Python automation tooling and CVE triage workflows
+        for Safe Software's Product Security team. Worked closely with engineers and
+        customers to assess and remediate open-source dependency risk in production."
+      hero={<SafeSoftwareHero />}
     >
-      {/* Hero */}
-      <div
-        style={{
-          width: '100%',
-          height: '30vh',
-          backgroundImage: 'url(/models/safesoftware.jpg)',
-          backgroundSize: 'contain',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          opacity: 0.9,
-        }}
-      />
-
-      {/* Card */}
-      <div
-        style={{
-          maxWidth: 750,
-          margin: '1rem auto 0 auto',
-          padding: '2.5rem',
-          borderRadius: '20px',
-          background: 'rgba(255, 255, 255, 0.05)',
-          backdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255,255,255,0.1)',
-          boxShadow: '0 20px 60px rgba(0,0,0,0.6)',
-        }}
-      >
-        <h1
-          style={{
-            fontSize: '2.7rem',
-            marginBottom: '0.5rem',
-            fontWeight: '600',
-            letterSpacing: '-0.5px',
-          }}
-        >
-          Software Developer Intern
-        </h1>
-
-        <p style={{ color: '#9ca3af', marginBottom: '0.2rem' }}>
-          Safe Software — Product Security
-        </p>
-
-        <p style={{ color: '#6b7280', fontSize: '0.9rem', marginBottom: '1.8rem' }}>
-          Jan 2026 – Apr 2026 · Surrey, BC
-        </p>
-
-        <p
-          style={{
-            color: '#d1d5db',
-            lineHeight: 1.8,
-            fontSize: '0.95rem',
-            marginBottom: '1.5rem',
-          }}
-        >
-          Built internal Python automation tools for vulnerability detection across production systems.
-          Worked with Snyk and Black Duck to analyze open-source risks, prioritize CVEs, and support
-          remediation across engineering teams. Gained hands-on experience with software supply chain
-          security in large-scale systems.
-        </p>
-
-        {/* Skills */}
-        <div style={{ marginBottom: '2rem' }}>
-          <p style={{ color: '#9ca3af', marginBottom: '0.5rem' }}>
-            Skills & Technologies
-          </p>
-
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-            {[
-              'Python',
-              'Snyk',
-              'Black Duck',
-              'GitHub',
-              'Jira',
-              'CVE Analysis',
-              'Automation',
-            ].map((skill) => (
-              <span
-                key={skill}
-                style={{
-                  padding: '0.4rem 0.8rem',
-                  borderRadius: '999px',
-                  background: 'rgba(255,255,255,0.08)',
-                  fontSize: '0.8rem',
-                  color: '#e5e7eb',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                }}
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Buttons */}
-        <div style={{ display: 'flex', gap: '1rem' }}>
-          <button
-            onClick={() => navigate('/')}
-            style={{
-              padding: '0.75rem 1.6rem',
-              borderRadius: '8px',
-              background: 'transparent',
-              border: '1px solid rgba(255,255,255,0.2)',
-              color: '#9ca3af',
-              cursor: 'pointer',
-              fontSize: '0.9rem',
-              transition: 'all 0.2s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.border = '1px solid #fff';
-              e.target.style.color = '#fff';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.border = '1px solid rgba(255,255,255,0.2)';
-              e.target.style.color = '#9ca3af';
-            }}
-          >
-            ← Back
-          </button>
-
-
-          <a
-            href="https://www.safe.com"
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              padding: '0.75rem 1.6rem',
-              borderRadius: '8px',
-              background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
-              color: '#fff',
-              textDecoration: 'none',
-              fontSize: '0.9rem',
-              fontWeight: '500',
-              transition: 'all 0.2s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.transform = 'translateY(-2px)';
-              e.target.style.boxShadow = '0 10px 25px rgba(99,102,241,0.4)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = 'none';
-            }}
-          >
-            Visit Website →
-          </a>
-        </div>
+      <div className="job-meta">
+        <span>Safe Software</span>
+        <span>Product Security Team</span>
+        <span>Surrey, BC</span>
+        <span>Jan 2026 — Apr 2026</span>
       </div>
-    </div>
+
+      <Section label="Highlights">
+        <ProjectCard
+          title="Internal vulnerability triage automation"
+          date="Jan 2026 — Apr 2026"
+          tagline="Built tooling to make CVE triage dramatically faster across large codebases."
+          bullets={[
+            'Built Python automation to triage vulnerabilities across large codebases, improving workflow efficiency.',
+            'Owned CVE exploitability investigations, reducing time from 3 days to hours and enabling 2–3 investigations per day.',
+            'Restructured vulnerability triage workflows to better identify high-impact security risks.',
+            'Prioritized CVE investigations by customer impact, driving rapid analysis of customer-reported vulnerabilities.',
+            'Collaborated with engineers to assess CVE impact and drive timely remediation in production systems.',
+            'Communicated technical findings to customers, improving alignment on security risks and mitigation strategies.',
+          ]}
+          chips={[
+            'Python',
+            'Snyk',
+            'Black Duck',
+            'GitHub',
+            'Jira',
+            'CVE Analysis',
+            'Automation',
+          ]}
+        />
+      </Section>
+
+      <Section label="What I took away">
+        <div className="prose">
+          <p>
+            This role strengthened my understanding of software supply chain security
+            and secure development practices in large-scale systems. It also taught me
+            a lot about explaining technical risk to non-engineering stakeholders —
+            translating "here's a CVSS 8.4" into "here's specifically what could
+            happen to your data, and here's our timeline to fix it."
+          </p>
+        </div>
+      </Section>
+    </PageLayout>
   );
 }
