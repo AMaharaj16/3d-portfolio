@@ -7,6 +7,7 @@ import * as THREE from 'three';
 import Room from './three/room';
 import SailbotPage from './three/objects/posters/sailbotpage';
 import SafeSoftwarePage from './three/objects/posters/safesoftwarepage';
+import UpgradedPage from './three/objects/posters/upgradedpage';
 import DeskPage from './three/objects/desk/deskpage';
 import GameConsolePage from './three/objects/gameconsole/gameconsolepage';
 import TarsPage from './three/objects/tars/tarspage';
@@ -94,15 +95,6 @@ function MainScene() {
           color="#c8d4ff"
         />
 
-        {/* Soft central fill */}
-        <pointLight
-          position={[1, 8.5, 3]}
-          intensity={6}
-          distance={26}
-          decay={2}
-          color="#ffe6c2"
-        />
-
         {/* Mood accent zones */}
         <pointLight
           position={[-14, 4, 11]}
@@ -125,14 +117,6 @@ function MainScene() {
           decay={2}
           color="#ffb964"
         />
-        <pointLight
-          position={[-10, 3, 3]}
-          intensity={3.5}
-          distance={10}
-          decay={2}
-          color="#ff9b6e"
-        />
-
         <Suspense fallback={null}>
           <Room />
           <Atmosphere />
@@ -171,6 +155,7 @@ function App() {
         <Route path="/" element={<MainScene />} />
         <Route path="/sailbot" element={<SailbotPage />} />
         <Route path="/safesoftware" element={<SafeSoftwarePage />} />
+        <Route path="/upgraded" element={<UpgradedPage />} />
         <Route path="/desk" element={<DeskPage />} />
         <Route path="/gameconsole" element={<GameConsolePage />} />
         <Route path="/tars" element={<TarsPage />} />

@@ -10,12 +10,23 @@ import Poster from './poster';
 export default function Room() {
   return (
     <>
-      {/* Roof - moody navy that still reads as a real surface
-          (was previously near-black which made the room visually disappear) */}
+      {/* Roof - navy*/}
       <mesh position={[1, 11, 3]} receiveShadow castShadow>
         <boxGeometry args={[38, 0.5, 24]} />
         <meshStandardMaterial
-          color="#1c2545"
+          color="#ad9e80"
+          roughness={0.85}
+          metalness={0.05}
+          emissive="#1a2240"
+          emissiveIntensity={0.04}
+        />
+      </mesh>
+
+      {/* Floor - navy mesh that overlaps on floor*/}
+      <mesh position={[1, 0.3, 3]} receiveShadow castShadow>
+        <boxGeometry args={[38, 0.5, 24]} />
+        <meshStandardMaterial
+          color="#474136"
           roughness={0.85}
           metalness={0.05}
           emissive="#1a2240"
@@ -48,6 +59,15 @@ export default function Room() {
         height={2}
         route="/safesoftware"
         accentColor="#a586ff"
+      />
+      <Poster
+        imagePath="/models/upgraded.png"
+        position={[-1.5, 7, -7.5]}
+        rotation={[0, 0, 0]}
+        width={3}
+        height={2}
+        route="/upgraded"
+        accentColor="#ff8a5b"
       />
     </>
   );

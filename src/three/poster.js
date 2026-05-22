@@ -17,10 +17,10 @@ export default function Poster({
   const [hovered, setHovered] = useState(false);
 
   const { lightI, frameEm, glowOpacity, posterEm, scale } = useSpring({
-    lightI: hovered ? 14 : 0,
-    frameEm: hovered ? 2.2 : 0,
-    glowOpacity: hovered ? 0.55 : 0,
-    posterEm: hovered ? 0.5 : 0,
+    lightI: hovered ? 10 : 0,
+    frameEm: hovered ? 0.5 : 0,
+    glowOpacity: hovered ? 0.28 : 0,
+    posterEm: hovered ? 0.12 : 0,
     scale: hovered ? 1.04 : 1,
     config: { tension: 220, friction: 18 },
   });

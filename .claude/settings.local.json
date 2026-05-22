@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:getupgraded.ai)",
+      "WebSearch",
+      "WebFetch(domain:www.getupgraded.ca)"
+    ]
+  }
+}
